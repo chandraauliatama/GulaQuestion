@@ -1,64 +1,50 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-slot name="image">
+        <img src="{{ asset('images/registerHero.png') }}">
+    </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
-
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-
+    <div class="flex w-full lg:w-1/2 justify-center items-center bg-[#79c39b] lg:bg-white space-y-8">
+        <div class="w-full px-8 md:px-32 lg:px-24">
+            <form method="POST" action="{{ route('register') }}" class="bg-white rounded-md shadow-2xl p-5">
+                @csrf
+                <div class="text-center">
+                    <a href="{{ route('home') }}"
+                        class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white">
+                        <img src="{{ asset('images/logo.svg') }}" class="h-6 mr-3 sm:h-9" alt="GulaQuestion Logo" />
+                        Gula Question
+                    </a>
+                </div>
+                <h1 class="text-[#79c39b] font-bold text-2xl mb-1">Selamat Datang!</h1>
+                <p class="text-sm font-normal text-gray-600 mb-8">Silahkan membuat akun untuk mengakses fitur</p>
+                {{-- Name --}}
+                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
+                    placeholder="Nama Lengkap" required autofocus />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
-
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-
+                {{-- Email --}}
+                <x-text-input id="email" class="block mt-6 w-full" type="email" name="email" :value="old('email')"
+                    placeholder="Alamat Email" required />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-
+                {{-- Password --}}
+                <x-text-input id="password" class="block mt-6 w-full" type="password" name="password"
+                    placeholder="Password" required autocomplete="new-password" />
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-
+                {{-- Confirm Password --}}
+                <x-text-input id="password_confirmation" class="block mt-6 w-full" type="password"
+                    name="password_confirmation" placeholder="Konfirmasi Password" required />
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                <x-primary-button>Daftar</x-primary-button>
+
+                <a href="{{ route('login') }}"
+                    class="text-sm ml-2text-sm font-normal text-gray-600 mb-8 hover:text-green-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">
+                    Sudah punya akun?
                 </a>
 
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
+            </form>
+        </div>
+
+    </div>
 </x-guest-layout>
