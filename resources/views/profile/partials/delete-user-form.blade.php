@@ -2,7 +2,7 @@
     <header>
         <h2 class="text-lg font-medium text-gray-900">Hapus Akun</h2>
         <p class="mt-1 text-sm text-gray-600">Setelah kamu menghapus akun, semua data dan resource mengenai akunmu akan
-            dihapus. Sebelum menghapus harap pertimbagkan keputusannmu</p>
+            dihapus. Sebelum menghapus harap pertimbangkan keputusannmu</p>
     </header>
 
     <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">Hapus

@@ -1,39 +1,49 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <x-slot name="image">
+        <img src="{{ asset('images/registerHero.png') }}" alt="">
+    </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
-
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
-        @endif
-
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-
-                <div>
-                    <x-primary-button>
-                        {{ __('Resend Verification Email') }}
-                    </x-primary-button>
+    <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+        <div class="w-full px-8 md:px-32 lg:px-24">
+            <div class="bg-white rounded-md shadow-2xl p-5">
+                <div class="text-center">
+                    <a href="{{ route('home') }}"
+                        class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white">
+                        <img src="{{ asset('images/logo.svg') }}" class="h-6 mr-3 sm:h-9" alt="GulaQuestion Logo" />
+                        Gula Question
+                    </a>
                 </div>
-            </form>
+                <h1 class="text-[#79c39b] font-bold text-2xl mb-1">Konfirmasi Email</h1>
+                <p class="text-sm font-normal text-gray-600 mb-8 text-justify">Terima kasih telah mendaftar! Sebelum
+                    memulai,
+                    silahkan verifikasi alamat email kamu dengan mengeklik tautan yang baru saja kami kirimkan pada
+                    alamat emailmu. Jika kamu tidak menerima email tersebut, kami dengan senang hati akan
+                    mengirimkan email lain kepadamu.
+                </p>
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
+                @if (session('status') == 'verification-link-sent')
+                    <div class="mb-4 font-medium text-sm text-green-600">
+                        {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                    </div>
+                @endif
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
+                <form method="POST" action="{{ route('verification.send') }}">
+                    @csrf
+                    <div>
+                        <x-primary-button>
+                            {{ __('Resend Verification Email') }}
+                        </x-primary-button>
+                    </div>
+                </form>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit"
+                        class="text-sm ml-2 font-normal text-gray-600 hover:text-green-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">
+                        {{ __('Log Out') }}
+                    </button>
+                </form>
+            </div>
         </div>
-    </x-auth-card>
+    </div>
 </x-guest-layout>
