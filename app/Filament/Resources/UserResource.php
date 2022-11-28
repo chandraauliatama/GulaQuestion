@@ -34,7 +34,7 @@ class UserResource extends Resource
                 Forms\Components\Select::make('role')
                     ->options(['admin' => 'Admin', 'user' => 'User'])
                     ->required(),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
+                Forms\Components\DatePicker::make('email_verified_at'),
                 Forms\Components\TextInput::make('password')
                     ->password()
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
