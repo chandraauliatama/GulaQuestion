@@ -12,8 +12,7 @@
                 <div class="text-center">
                     <a href="{{ route('home') }}"
                         class="flex items-center justify-center mb-5 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img src="{{ asset('images/logo.svg') }}" class="h-6 mr-3 sm:h-9" alt="GulaQuestion Logo" />
-                        Gula Question
+                        <img src="{{ asset('images/logo.png') }}" class="h-16 sm:h-16" alt="GulaQuestion Logo" />
                     </a>
                 </div>
                 <h1 class="text-[#79c39b] font-bold text-2xl mb-1">Lupa password?</h1>
