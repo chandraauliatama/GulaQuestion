@@ -2,7 +2,7 @@
     "indentSize": 4,
     "wrapAttributes": "auto",
     "wrapLineLength": 1e+35,
-    "endWithNewLine": true,
+    "endWithNewLine": false,
     "noMultipleEmptyLines": false,
     "useTabs": false,
     "sortTailwindcssClasses": true,

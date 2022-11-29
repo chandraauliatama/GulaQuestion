@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\FilamentAuth;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -315,7 +316,8 @@ return [
 
     'middleware' => [
         'auth' => [
-            Authenticate::class,
+            // Authenticate::class, // default
+            FilamentAuth::class, //custom
         ],
         'base' => [
             EncryptCookies::class,

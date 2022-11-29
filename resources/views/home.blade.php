@@ -13,9 +13,10 @@
                         Kandungan Gula <br>Dengan Takaran Sendok.
                     </h1>
                     <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                        Pada Era Digital sekarang, Pemanfaatan teknologi sangat berarti pada kehidupan, kesehatan
-                        adalah hal yang paling penting untuk diri kita, maka dari itu alangkah baiknya kita <i>Aware</i>
-                        pada pola makan kita.</p>
+                        Pada Era Digital sekarang, Pemanfaatan teknologi sangat berarti pada kehidupan, kesehatan adalah
+                        hal yang paling penting untuk diri kita, maka dari itu alangkah baiknya kita <i>Aware</i> pada
+                        pola makan kita.
+                    </p>
 
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
@@ -27,19 +28,19 @@
 
         <!-- Start block -->
         <section class="bg-gray-50 dark:bg-gray-800" id="manfaat">
-            <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py-24 lg:px-6">
+            <div class="max-w-screen-xl px-4 py-8 mx-auto space-y-12 lg:space-y-20 lg:py- lg:px-6">
                 <!-- Row -->
                 <div class="items-center gap-8 lg:grid lg:grid-cols-2 xl:gap-16">
                     <div class="text-gray-500 sm:text-lg dark:text-gray-400">
                         <div class="lg:hidden mb-6">
                             <img src="{{ asset('images/feature-1.png') }}" alt="hero image">
                         </div>
-                        <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Manfaat
-                            Qula
-                            Question untukmu</h2>
-                        <p class="mb-8 font-light lg:text-xl">Beberapa manfaat yang bisa kamu dapatkan ketika
-                            menggunakan
-                            Gula Question, pedulilah dengan takaran konsumsi gulamu sebelum hal membahayakan terjadi.
+                        <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+                            Manfaat Qula Question untukmu
+                        </h2>
+                        <p class="mb-8 font-light lg:text-xl">
+                            Beberapa manfaat yang bisa kamu dapatkan ketika menggunakan Gula Question, pedulilah dengan
+                            takaran konsumsi gulamu sebelum hal membahayakan terjadi.
                         </p>
                         <!-- List -->
                         <ul role="list" class="pt-8 space-y-5 border-t border-gray-200 my-7 dark:border-gray-500">
@@ -51,8 +52,9 @@
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd"></path>
                                 </svg>
-                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Temukan
-                                    Produk Relevan</span>
+                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                                    Temukan Produk Relevan
+                                </span>
                             </li>
                             <li class="flex space-x-3">
                                 <!-- Icon -->
@@ -62,8 +64,9 @@
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd"></path>
                                 </svg>
-                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Takar
-                                    Kandungan Gula</span>
+                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                                    Takar Kandungan Gula
+                                </span>
                             </li>
                             <li class="flex space-x-3">
                                 <!-- Icon -->
@@ -85,13 +88,14 @@
                                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                         clip-rule="evenodd"></path>
                                 </svg>
-                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">Beri
-                                    Saran
-                                    Kesehatan</span>
+                                <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
+                                    Beri Saran Kesehatan
+                                </span>
                             </li>
                         </ul>
-                        <p class="mb-8 font-light lg:text-xl">Program akan terus dikembangkan supaya benefit yang
-                            didapatkan lebih banyak.</p>
+                        <p class="mb-8 font-light lg:text-xl">
+                            Program akan terus dikembangkan supaya benefit yang didapatkan lebih banyak.
+                        </p>
                     </div>
                     <img class="hidden w-full mb-4 rounded-lg lg:mb-0 lg:flex" src="{{ asset('images/feature-1.png') }}"
                         alt="dashboard feature image">
@@ -119,7 +123,8 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="text-base font-medium leading-tight text-gray-900 dark:text-white">
-                                    Meningkatkan risiko penyakit Diabetes</span>
+                                    Meningkatkan risiko penyakit Diabetes
+                                </span>
                             </li>
                             <li class="flex space-x-3">
                                 <!-- Icon -->
