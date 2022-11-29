@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::redirect('/admin/login', '/login');
 Route::group(['middleware' => 'auth'], function(){
     // Redirect User After Login
     Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, "home"]);
+    Route::resource('addproduct', AddProductController::class)->only(['index', 'store']);
 });
 
 Route::get('/', function () {
