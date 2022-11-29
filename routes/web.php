@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Remove Filament Admin Login Page
+Route::redirect('/admin/login', '/login');
+
+
+Route::group(['middleware' => 'auth'], function(){
+    // Redirect User After Login
+    Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, "home"]);
+});
 
 Route::get('/', function () {
     return view('home');
