@@ -2,7 +2,8 @@
     <div class="container flex flex-col items-center px-6 mx-auto pt-28 pb-12">
         <div class="flex w-full lg:w-2/3 justify-center items-center bg-white space-y-8">
             <div class="w-full md:px-32 lg:px-24">
-                <form method="POST" action="{{ route('addproduct.store') }}" class="bg-white rounded-md shadow-2xl p-5">
+                <form method="POST" action="{{ route('addproduct.store') }}" class="bg-white rounded-md shadow-2xl p-5"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="text-center">
                         <a href="{{ route('home') }}"
@@ -15,6 +16,7 @@
                         produk.</p>
                     <p class="text-xs font-normal text-gray-600 mb-8">Data yang kamu kirimkan akan ditinjau oleh admin
                         terlebih dahulu untuk mengecek kebenarannya</p>
+                    <input type="hidden" value="{{ auth()->id() }}" name="user_id">
                     {{-- Name --}}
                     <x-input-label>Nama Produk</x-input-label>
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
@@ -57,19 +59,17 @@
 
                     <x-input-label class="mt-3">Foto Produk & Kandungan Nilai Gizi</x-input-label>
                     <input
+                        class="block w-full text-sm text-gray-600 border border-gray-300 rounded-xl cursor-pointer bg-gray-50 focus:border-green-500 focus:ring-green-500 mb-2"
+                        id="image1" name="image1" type="file">
+                    <input
                         class="block w-full text-sm text-gray-600 border border-gray-300 rounded-xl cursor-pointer bg-gray-50 focus:border-green-500 focus:ring-green-500"
-                        id="image" name="image" type="file" multiple>
+                        id="image2" name="image2" type="file">
 
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG
                         (maks ukuran
-                        file 4mb, kamu bisa upload lebih dari 1 foto)</p>
+                        file 4mb)</p>
 
                     <x-primary-button>Kirim Data</x-primary-button>
-
-                    <a href="{{ route('login') }}"
-                        class="text-sm ml-2text-sm font-normal text-gray-600 mb-8 hover:text-green-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">
-                        Sudah punya akun?
-                    </a>
                 </form>
             </div>
         </div>

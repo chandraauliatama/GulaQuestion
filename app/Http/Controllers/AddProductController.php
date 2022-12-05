@@ -25,8 +25,10 @@ class AddProductController extends Controller
      */
     public function store(Request $request)
     {
-
-        auth()->user()->userProducts()->create($request->all());
+        // $userProduct = auth()->user()->userProducts()->create($request->all());
+        $userProduct = UserProduct::create($request->all());
+        $userProduct->addMediaFromRequest('image1')->toMediaCollection('images1');
+        $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
 
         return redirect('addproduct');
     }

@@ -312,7 +312,7 @@
                     <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Usaha kamu sangat berarti
                         bagi
                         orang lain dengan data gula yang kamu isikan</p>
-                    <a href="#"
+                    <a href="{{ route('addproduct.index') }}"
                         class="text-white bg-[#79c39b] hover:bg-[#79c39b] focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-500 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Tambah
                         Data Gula</a>
                 </div>
