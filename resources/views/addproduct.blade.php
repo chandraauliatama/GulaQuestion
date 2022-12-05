@@ -2,7 +2,7 @@
     <div class="container flex flex-col items-center px-6 mx-auto pt-28 pb-12">
         <div class="flex w-full lg:w-2/3 justify-center items-center bg-white space-y-8">
             <div class="w-full md:px-32 lg:px-24">
-                <form method="POST" action="{{ route('addproduct.store') }}" class="bg-white rounded-md shadow-2xl p-5"
+                <form method="POST" action="{{ route('product.store') }}" class="bg-white rounded-md shadow-2xl p-5"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="text-center">

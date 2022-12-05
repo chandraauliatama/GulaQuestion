@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\UserProduct;
 use Illuminate\Http\Request;
 
-class AddProductController extends Controller
+class UserProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class AddProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         return view('addproduct');
     }
@@ -27,10 +37,35 @@ class AddProductController extends Controller
     {
         // $userProduct = auth()->user()->userProducts()->create($request->all());
         $userProduct = UserProduct::create($request->all());
-        $userProduct->addMediaFromRequest('image1')->toMediaCollection('images1');
-        $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
+        if ($request->hasFile('image1')) {
+            $userProduct->addMediaFromRequest('image1')->toMediaCollection('images1');
+        }
+        if ($request->hasFile('image2')) {
+            $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
+        }
+        return redirect()->route('product.create');
+    }
 
-        return redirect('addproduct');
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**

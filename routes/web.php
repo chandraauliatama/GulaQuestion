@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/admin/login', '/login');
 
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth', 'verified']], function(){
     // Redirect User After Login
     Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, "home"]);
-    Route::resource('addproduct', AddProductController::class)->only(['index', 'store']);
+    Route::resource('product', UserProductController::class)->only(['index', 'create', 'store']);
 });
 
 Route::get('/', function () {
