@@ -43,6 +43,7 @@ class UserProductController extends Controller
         if ($request->hasFile('image2')) {
             $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
+
         return redirect()->route('product.create');
     }
 

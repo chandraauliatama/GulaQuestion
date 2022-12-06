@@ -11,7 +11,7 @@ class UserProduct extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $guarded = ["id"];
+    protected $guarded = ['id'];
 
     public function user()
     {

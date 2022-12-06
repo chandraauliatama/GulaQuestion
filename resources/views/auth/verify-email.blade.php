@@ -13,8 +13,8 @@
                     </a>
                 </div>
                 <h1 class="text-[#79c39b] font-bold text-2xl mb-1">Konfirmasi Email</h1>
-                <p class="text-sm font-normal text-gray-600 mb-8 text-justify">Terima kasih telah mendaftar! Sebelum
-                    memulai,
+                <p class="text-sm font-normal text-gray-600 mb-8 text-justify">Terima kasih telah mendaftar! Untuk
+                    melanjutkan,
                     silahkan verifikasi alamat email kamu dengan mengeklik tautan yang baru saja kami kirimkan pada
                     alamat emailmu. Jika kamu tidak menerima email tersebut, kami dengan senang hati akan
                     mengirimkan email lain kepadamu.
