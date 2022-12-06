@@ -27,7 +27,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    @vite(['resources/css/app.css'])
+    {{-- @vite(['resources/css/app.css']) --}}
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+    @livewireScripts
+    @stack('scripts')
 </head>
 
 <body>
@@ -38,7 +47,7 @@
     {{ $slot }}
 
     @include('layouts.footer')
-    @vite(['resources/js/app.js'])
+    {{-- @vite(['resources/js/app.js']) --}}
     {{-- <script>
          const sections = document.querySelectorAll("section");
          const navLi = document.querySelectorAll("nav div div ul li a");
