@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    public function feedback()
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }

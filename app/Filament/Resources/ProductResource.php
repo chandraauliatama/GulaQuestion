@@ -34,7 +34,7 @@ class ProductResource extends Resource
                 Forms\Components\Select::make('category')
                     ->options(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                     ->required(),
-                Forms\Components\TextInput::make('BPOM ID')
+                Forms\Components\TextInput::make('bpom_id')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('weight')
@@ -54,7 +54,7 @@ class ProductResource extends Resource
                     ->enum(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                     ->colors(['danger' => 'makanan', 'success' => 'minuman'])
                     ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('BPOM ID'),
+                Tables\Columns\TextColumn::make('bpom_id'),
                 Tables\Columns\TextColumn::make('weight'),
                 Tables\Columns\TextColumn::make('sugar'),
                 Tables\Columns\TextColumn::make('created_at')

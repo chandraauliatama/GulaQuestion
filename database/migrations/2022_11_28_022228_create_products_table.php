@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->enum('category', ['makanan', 'minuman']);
-            $table->string('BPOM ID');
+            $table->string('bpom_id');
             $table->float('weight');
             $table->float('sugar');
             $table->timestamps();

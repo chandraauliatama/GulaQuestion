@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\UserProduct;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,7 @@ class UserProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProduct $product)
+    public function show(Product $product)
     {
         return view('productdetail', compact('product'));
     }

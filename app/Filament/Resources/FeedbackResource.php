@@ -25,7 +25,7 @@ class FeedbackResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('user_id')
                     ->required(),
-                Forms\Components\TextInput::make('product')
+                Forms\Components\TextInput::make('product_id')
                     ->required(),
                 Forms\Components\TextInput::make('feedback')
                     ->required()
@@ -38,7 +38,7 @@ class FeedbackResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('product'),
+                Tables\Columns\TextColumn::make('product_id'),
                 Tables\Columns\TextColumn::make('feedback'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),

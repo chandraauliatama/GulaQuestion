@@ -29,7 +29,7 @@ class ListProducts extends Component implements HasTable
                 ->enum(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                 ->colors(['danger' => 'makanan', 'success' => 'minuman'])
                 ->searchable()->sortable(),
-            Columns\TextColumn::make('BPOM ID')->label('BPOM ID'),
+            Columns\TextColumn::make('bpom_id')->label('BPOM ID'),
             Columns\TextColumn::make('weight'),
             Columns\TextColumn::make('sugar'),
         ];

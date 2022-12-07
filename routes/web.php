@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProductController;
 use Illuminate\Support\Facades\Route;
@@ -19,19 +20,18 @@ use Illuminate\Support\Facades\Route;
 // Remove Filament Admin Login Page
 Route::redirect('/admin/login', '/login');
 
+Route::view('/', 'home')->name('home');
+
+
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Redirect User After Login
     Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, 'home']);
-    Route::resource('product', UserProductController::class)->only(['index', 'create', 'store', 'show']);
+    Route::resource('product', UserProductController::class)->only(['create', 'store']);
+    Route::get('feedback/{product}', [FeedbackController::class, 'create'])->name('feedback');
+    Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 });
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::resource('product', UserProductController::class)->only(['index', 'show']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
