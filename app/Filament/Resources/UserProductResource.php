@@ -14,7 +14,14 @@ class UserProductResource extends Resource
 {
     protected static ?string $model = UserProduct::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-plus';
+
+    protected static ?int $navigationSort = 5;
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {

@@ -22,7 +22,6 @@ Route::redirect('/admin/login', '/login');
 
 Route::view('/', 'home')->name('home');
 
-
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Redirect User After Login
     Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, 'home']);

@@ -13,14 +13,15 @@ class FeedbackController extends Controller
         return view('feedback', compact('product'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // $userProduct = auth()->user()->userProducts()->create($request->all());
-        $userProduct = Feedback::create($request->all());
+        $feedback = Feedback::create($request->all());
         if ($request->hasFile('image1')) {
-            $userProduct->addMediaFromRequest('image1')->toMediaCollection('images1');
+            $feedback->addMediaFromRequest('image1')->toMediaCollection('images1');
         }
         if ($request->hasFile('image2')) {
-            $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
+            $feedback->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
 
         return redirect()->route('product.show', $request->product_id);

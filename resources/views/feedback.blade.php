@@ -38,7 +38,7 @@
                     <x-text-input id="sugar" class="mt-1 block w-full" type="number" name="sugar" :value="$product->sugar" disabled />
 
 
-                    <form action="{{ route('feedback.store') }}" method="post">
+                    <form action="{{ route('feedback.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                         <input type="hidden" name="product_id" value="{{ $product->id }}">

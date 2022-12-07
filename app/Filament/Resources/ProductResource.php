@@ -16,10 +16,7 @@ class ProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static function getNavigationBadge(): ?string
-    {
-        return 1;
-    }
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {

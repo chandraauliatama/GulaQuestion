@@ -11,13 +11,15 @@ class Feedback extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $guarded = ["id"];
+    protected $guarded = ['id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function product(){
+    public function product()
+    {
         return $this->belognsTo(Product::class);
     }
 }
