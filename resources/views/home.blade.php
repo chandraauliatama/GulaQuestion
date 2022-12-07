@@ -17,7 +17,16 @@
                         hal yang paling penting untuk diri kita, maka dari itu alangkah baiknya kita <i>Aware</i> pada
                         pola makan kita.
                     </p>
-
+                    <a href="{{ route('product.index') }}"
+                        class="inline-flex items-center px-3 py-2 text-sm text-center text-white bg-[#79c39b] rounded-lg hover:bg-[#20ba67] hover:-translate-y-1 transition-all duration-500 font-semibold mb-2 active:bg-[#20ba67] focus:bg-[#20ba67] focus:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#20ba67] focus:ring-offset-2">
+                        Lihat Data Gula
+                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
                 </div>
                 <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
                     <img src="{{ asset('images/hero.png') }}" alt="hero image">

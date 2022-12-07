@@ -22,7 +22,7 @@ Route::redirect('/admin/login', '/login');
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Redirect User After Login
     Route::get('/redirectAuthenticatedUsers', [RedirectAuthenticatedUsersController::class, 'home']);
-    Route::resource('product', UserProductController::class)->only(['index', 'create', 'store']);
+    Route::resource('product', UserProductController::class)->only(['index', 'create', 'store', 'show']);
 });
 
 Route::get('/', function () {
