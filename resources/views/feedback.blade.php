@@ -30,12 +30,12 @@
                     <x-text-input id="bpom_id" class="mt-1 block w-full" type="text" name="bpom_id" :value="$product->bpom_id" disabled />
 
                     {{-- Berat Produk --}}
-                    <x-input-label class="mt-3">Berat Produk(Gram)</x-input-label>
-                    <x-text-input id="weight" class="mt-1 block w-full" type="number" name="weight" :value="$product->weight" disabled />
+                    <x-input-label class="mt-3">Berat Produk</x-input-label>
+                    <x-text-input id="weight" class="mt-1 block w-full" type="text" name="weight" :value="$product->weight . ' ' . $product->weight_type" disabled />
 
                     {{-- Kandungan Gula --}}
-                    <x-input-label class="mt-3">Kandungan Gula(Mg)</x-input-label>
-                    <x-text-input id="sugar" class="mt-1 block w-full" type="number" name="sugar" :value="$product->sugar" disabled />
+                    <x-input-label class="mt-3">Kandungan Gula</x-input-label>
+                    <x-text-input id="sugar" class="mt-1 block w-full" type="text" name="sugar" :value="$product->sugar . ' ' . $product->sugar_type" disabled />
 
 
                     <form action="{{ route('feedback.store') }}" method="post" enctype="multipart/form-data">

@@ -14,9 +14,18 @@ class FeedbackResource extends Resource
 {
     protected static ?string $model = Feedback::class;
 
+    protected static ?string $navigationLabel = 'Saran Perbaikan Data';
+
+        protected static ?string $pluralModelLabel = 'Saran Perbaikan Data';
+
     protected static ?string $navigationIcon = 'heroicon-o-shield-exclamation';
 
     protected static ?int $navigationSort = 4;
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
 
     protected static function getNavigationBadge(): ?string
     {
@@ -41,12 +50,12 @@ class FeedbackResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user_id'),
-                Tables\Columns\TextColumn::make('product_id'),
-                Tables\Columns\TextColumn::make('feedback'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('user.name')->label('Nama Pengirim')->wrap(),
+                Tables\Columns\TextColumn::make('user.email')->label('Email Pengirim')->wrap(),
+                Tables\Columns\TextColumn::make('product_id')->label('Product ID'),
+                Tables\Columns\TextColumn::make('product.name')->label('Nama Produk')->wrap(),
+                Tables\Columns\TextColumn::make('feedback')->label('Saran Perbaikan Data')->wrap(),
+                Tables\Columns\TextColumn::make('created_at')->label('Dikirim Pada')->wrap()
                     ->dateTime(),
             ])
             ->filters([

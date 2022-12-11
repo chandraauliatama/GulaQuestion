@@ -20,7 +20,9 @@ return new class extends Migration
             $table->enum('category', ['makanan', 'minuman']);
             $table->string('bpom_id');
             $table->float('weight');
+            $table->enum('weight_type', ['gram', 'mg', 'liter', 'ml']);
             $table->float('sugar');
+            $table->enum('sugar_type', ['gram', 'mg', 'liter', 'ml']);
             $table->timestamps();
         });
     }

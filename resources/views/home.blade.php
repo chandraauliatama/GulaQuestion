@@ -333,9 +333,7 @@
                 <div class="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
                     <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Team Creator
                     </h2>
-                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400 sm:text-xl">Website ini dikerjakan
-                        dengan
-                        beberapa orang yang memiliki job masing - masing.</p>
+                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400 sm:text-xl">Tim kami terdiri dari orang-orang yang handal dan berpengalaman di bidang masing-masing. Kami bekerja sama untuk membuat website ini menjadi lebih baik dan menarik bagi Anda</p>
                 </div>
                 <div class="space-y-8 sm:gap-6 lg:grid lg:grid-cols-4 lg:space-y-0 xl:gap-10">
                     <!-- Pricing Card -->

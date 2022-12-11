@@ -20,6 +20,6 @@ class Feedback extends Model implements HasMedia
 
     public function product()
     {
-        return $this->belognsTo(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

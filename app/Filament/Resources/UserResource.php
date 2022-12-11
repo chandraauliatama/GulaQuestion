@@ -15,6 +15,8 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
+    protected static ?string $pluralModelLabel = 'Pengguna';
+
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
 
     public static function form(Form $form): Form
@@ -44,21 +46,22 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('name')->searchable()->sortable()->label('Nama'),
                 Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
                 Tables\Columns\BadgeColumn::make('role')
                     ->enum(['admin' => 'Admin', 'user' => 'User'])
                     ->colors(['danger' => 'admin', 'success' => 'user'])
                     ->searchable()->sortable(),
-                Tables\Columns\IconColumn::make('email_verified_at')->boolean()->label('Email Verified'),
-                Tables\Columns\TextColumn::make('created_at')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->dateTime(),
+                Tables\Columns\IconColumn::make('email_verified_at')->boolean()->label('Email Terverifikasi'),
+                Tables\Columns\TextColumn::make('created_at')->date()->label('Dibuat Pada'),
+                Tables\Columns\TextColumn::make('updated_at')->dateTime()->label('Diubah Pada'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->label('Ubah'),
+                Tables\Actions\DeleteAction::make()->label('Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

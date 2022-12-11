@@ -9,10 +9,15 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
+
+    protected static ?string $navigationLabel = 'Data Produk';
+
+    protected static ?string $pluralModelLabel = 'Produk';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -22,21 +27,27 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('name')->label('Nama Produk')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('brand')
+                Forms\Components\TextInput::make('brand')->label('Brand/Perusahaan')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('category')
+                Forms\Components\Select::make('category')->label('Kategori')
                     ->options(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                     ->required(),
-                Forms\Components\TextInput::make('bpom_id')
+                Forms\Components\TextInput::make('bpom_id')->label('BPOM ID')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('weight')
+                Forms\Components\TextInput::make('weight')->label('Berat')
                     ->required(),
-                Forms\Components\TextInput::make('sugar')
+                Forms\Components\Select::make('weight_type')->label('Satuan Berat')
+                    ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
+                    ->required(),
+                Forms\Components\TextInput::make('sugar')->label('Kandungan Gula')
+                    ->required(),
+                Forms\Components\Select::make('sugar_type')->label('Satuan Gula')
+                    ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
                     ->required(),
             ]);
     }
@@ -45,25 +56,28 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('brand')->searchable()->sortable(),
-                Tables\Columns\BadgeColumn::make('category')
+                Tables\Columns\TextColumn::make('name')->searchable()->sortable()->label('Nama Produk'),
+                Tables\Columns\TextColumn::make('brand')->searchable()->sortable()->label('Brand/Perusahaan'),
+                Tables\Columns\BadgeColumn::make('category')->label('Kategori')
                     ->enum(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                     ->colors(['danger' => 'makanan', 'success' => 'minuman'])
                     ->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('bpom_id'),
-                Tables\Columns\TextColumn::make('weight'),
-                Tables\Columns\TextColumn::make('sugar'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('bpom_id')->label('BPOM ID'),
+                Tables\Columns\TextColumn::make('weight')->label('Berat')
+                    ->suffix(fn (Model $record): string => " {$record->weight_type}"),
+                Tables\Columns\TextColumn::make('sugar')->label('Kandungan Gula')
+                    ->suffix(fn (Model $record): string => " {$record->sugar_type}"),
+                Tables\Columns\TextColumn::make('created_at')->label('Dibuat Pada')
+                    ->date(),
+                Tables\Columns\TextColumn::make('updated_at')->label('Diubah Pada')
                     ->dateTime(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->label('Ubah'),
+                Tables\Actions\DeleteAction::make()->label('Hapus'),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

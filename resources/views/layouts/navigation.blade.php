@@ -34,6 +34,11 @@
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            @if (auth()->user()->role == 'admin')
+                                <x-dropdown-link :href="route('filament.pages.dashboard')">
+                                    {{ __('Admin Dashboard') }}
+                                </x-dropdown-link>
+                            @endif
 
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
@@ -93,6 +98,11 @@
                     <li class="lg:hidden">
                         <x-nav-link :href="route('profile.edit')">Profil</x-nav-link>
                     </li>
+                    @if (auth()->user()->role == 'admin')
+                        <li class="lg:hidden">
+                            <x-nav-link :href="route('filament.pages.dashboard')">Admin Dashboard</x-nav-link>
+                        </li>
+                    @endif
                     <li class="lg:hidden">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
