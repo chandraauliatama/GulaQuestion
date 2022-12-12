@@ -3,8 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserProductResource\Pages;
+use App\Models\Product;
 use App\Models\UserProduct;
 use Filament\Forms;
+use Filament\Forms\Components\Wizard;
+use Filament\Notifications\Notification;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
@@ -86,41 +89,67 @@ class UserProductResource extends Resource
                 //
             ])
             ->actions([
-
                 Tables\Actions\DeleteAction::make()
                     ->label('Tolak')->button()->icon(false)
                     ->modalHeading('Tolak Data Produk?')->modalButton('Yes')
                     ->modalSubheading('Menolak data produk akan menghapus data dari tabel ini, yakin untuk melanjutkan?')
                     ->successNotificationTitle('Data Produk Telah Ditolak dan Dihapus Otomatis'),
-                // Tables\Actions\Action::make('Terima')
-                //     ->size('sm')->button()
-                //     ->action(fn () => [])
-                //     ->modalHeading('Terima Data Produk?')
-                //     ->form([
-                //         Forms\Components\TextInput::make('name')->label('Nama Produk')
-                //             ->required()
-                //             ->maxLength(255)
-                //             ->columnSpan(2),
-                //         Forms\Components\TextInput::make('brand')->label('Brand/Perusahaan')
-                //             ->required()
-                //             ->maxLength(255),
-                //         Forms\Components\Select::make('category')->label('Kategori')
-                //             ->options(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
-                //             ->required(),
-                //         Forms\Components\TextInput::make('bpom_id')->label('BPOM ID')
-                //             ->required()
-                //             ->maxLength(255)->columnSpan(2),
-                //         Forms\Components\TextInput::make('weight')->label('Berat')
-                //             ->required(),
-                //         Forms\Components\Select::make('weight_type')->label('Satuan Berat')
-                //             ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
-                //             ->required(),
-                //         Forms\Components\TextInput::make('sugar')->label('Kandungan Gula')
-                //             ->required(),
-                //         Forms\Components\Select::make('sugar_type')->label('Satuan Gula')
-                //             ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
-                //             ->required(),
-                //     ]),
+
+                Tables\Actions\Action::make('Terima')
+                    ->button()->icon(false)
+                    ->mountUsing(fn (Forms\ComponentContainer $form, UserProduct $record) => $form->fill([
+                        'sender' => $record->user->name,
+                        'sender_email' => $record->user->email,
+                        'name' => $record->name,
+                        'brand' => $record->brand,
+                        'category' => $record->category,
+                        'bpom_id' => $record->bpom_id,
+                        'weight' => $record->weight,
+                        'weight_type' => $record->weight_type,
+                        'sugar' => $record->sugar,
+                        'sugar_type' => $record->sugar_type
+                    ]))
+                    ->action(function (UserProduct $record, array $data): void {
+                        Product::create($data);
+                        $record->delete();
+                        Notification::make()->title('Data Produk Kiriman Pengguna Telah Dimasukan Ke Data Produk')->success()->send();
+                    })
+                    ->form([
+                        Wizard::make([
+                            Wizard\Step::make('Informasi Pengirim')->schema([
+                                Forms\Components\TextInput::make('sender')->label('Nama Pengirm')->disabled(),
+                                Forms\Components\TextInput::make('sender_email')->label('Email Pengirim')->disabled(),
+                            ]),
+                            Wizard\Step::make('Informasi Produk')->schema([
+                                Forms\Components\TextInput::make('name')->label('Nama Produk')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('brand')->label('Brand/Perusahaan')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\Select::make('category')->label('Kategori')
+                                    ->options(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
+                                    ->required(),
+                                Forms\Components\TextInput::make('bpom_id')->label('BPOM ID')
+                                    ->required()
+                                    ->maxLength(60),
+                            ]),
+                            Wizard\Step::make('Informasi Gula')->schema([
+                                Forms\Components\TextInput::make('weight')->label('Berat')
+                                    ->required(),
+                                Forms\Components\Select::make('weight_type')->label('Satuan Berat')
+                                    ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
+                                    ->required(),
+                                Forms\Components\TextInput::make('sugar')->label('Kandungan Gula')
+                                    ->required(),
+                                Forms\Components\Select::make('sugar_type')->label('Satuan Gula')
+                                    ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
+                                    ->required(),
+                            ])
+                        ]),
+                    ])
+                    ->modalButton('Masukkan Data')
+                    ->modalSubheading('Setelah data dimasukan ke data produk, data pada tabel ini akan dihapus.')
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

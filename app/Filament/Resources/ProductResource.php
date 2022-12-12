@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RelationResource\RelationManagers\FeedbackRelationManager;
 use App\Filament\Resources\ProductResource\Pages;
+use App\Filament\Resources\RelationResource\RelationManagers\FeedbackRelationManager;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Resources\Form;
