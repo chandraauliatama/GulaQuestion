@@ -22,6 +22,7 @@
     {{ $slot }}
 
     @include('layouts.footer')
+    @livewire('notifications')
 </body>
 
 </html>

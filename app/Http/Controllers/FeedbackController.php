@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feedback;
 use App\Models\Product;
+use Filament\Notifications\Notification;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -23,6 +24,11 @@ class FeedbackController extends Controller
         if ($request->hasFile('image2')) {
             $feedback->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
+
+        Notification::make() 
+            ->title('Koreksi yang kamu berikan telah terkirim, terimakasih!')
+            ->success()
+            ->send(); 
 
         return redirect()->route('product.show', $request->product_id);
     }

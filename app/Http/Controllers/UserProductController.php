@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\UserProduct;
+use Filament\Notifications\Notification;
 use Illuminate\Http\Request;
 
 class UserProductController extends Controller
@@ -44,6 +45,11 @@ class UserProductController extends Controller
         if ($request->hasFile('image2')) {
             $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
+
+        Notification::make() 
+            ->title('Terimakasih telah membantu mengisi data produk. Kami akan melakukan peninjauan')
+            ->success()
+            ->send(); 
 
         return redirect()->route('product.create');
     }
