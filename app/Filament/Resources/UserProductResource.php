@@ -9,7 +9,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Model;
 
 class UserProductResource extends Resource
 {
@@ -19,7 +18,7 @@ class UserProductResource extends Resource
 
     protected static ?string $navigationLabel = 'Data Produk Kiriman Pengguna';
 
-            protected static ?string $pluralModelLabel = 'Data Produk Kiriman Pengguna';
+    protected static ?string $pluralModelLabel = 'Data Produk Kiriman Pengguna';
 
     protected static ?int $navigationSort = 5;
 
@@ -29,6 +28,11 @@ class UserProductResource extends Resource
     }
 
     public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function canEdit($record): bool
     {
         return false;
     }
@@ -72,9 +76,9 @@ class UserProductResource extends Resource
                     ->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('bpom_id')->label('BPOM ID'),
                 Tables\Columns\TextColumn::make('weight')->label('Berat')
-                    ->suffix(fn (Model $record): string => " {$record->weight_type}"),
+                    ->suffix(fn ($record): string => " {$record->weight_type}"),
                 Tables\Columns\TextColumn::make('sugar')->label('Kandungan Gula')
-                    ->suffix(fn (Model $record): string => " {$record->sugar_type}"),
+                    ->suffix(fn ($record): string => " {$record->sugar_type}"),
                 Tables\Columns\TextColumn::make('created_at')->label('Dibuat Pada')
                     ->date(),
             ])
@@ -82,10 +86,41 @@ class UserProductResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\Action::make('Terima')
-                    ->size('md'),
-                Tables\Actions\Action::make('Tolak')
-                    ->size('md')->color('danger'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->label('Tolak')->button()->icon(false)
+                    ->modalHeading('Tolak Data Produk?')->modalButton('Yes')
+                    ->modalSubheading('Menolak data produk akan menghapus data dari tabel ini, yakin untuk melanjutkan?')
+                    ->successNotificationTitle('Data Produk Telah Ditolak dan Dihapus Otomatis'),
+                // Tables\Actions\Action::make('Terima')
+                //     ->size('sm')->button()
+                //     ->action(fn () => [])
+                //     ->modalHeading('Terima Data Produk?')
+                //     ->form([
+                //         Forms\Components\TextInput::make('name')->label('Nama Produk')
+                //             ->required()
+                //             ->maxLength(255)
+                //             ->columnSpan(2),
+                //         Forms\Components\TextInput::make('brand')->label('Brand/Perusahaan')
+                //             ->required()
+                //             ->maxLength(255),
+                //         Forms\Components\Select::make('category')->label('Kategori')
+                //             ->options(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
+                //             ->required(),
+                //         Forms\Components\TextInput::make('bpom_id')->label('BPOM ID')
+                //             ->required()
+                //             ->maxLength(255)->columnSpan(2),
+                //         Forms\Components\TextInput::make('weight')->label('Berat')
+                //             ->required(),
+                //         Forms\Components\Select::make('weight_type')->label('Satuan Berat')
+                //             ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
+                //             ->required(),
+                //         Forms\Components\TextInput::make('sugar')->label('Kandungan Gula')
+                //             ->required(),
+                //         Forms\Components\Select::make('sugar_type')->label('Satuan Gula')
+                //             ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
+                //             ->required(),
+                //     ]),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

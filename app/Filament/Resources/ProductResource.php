@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\RelationResource\RelationManagers\FeedbackRelationManager;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms;
@@ -9,7 +10,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Model;
 
 class ProductResource extends Resource
 {
@@ -64,9 +64,9 @@ class ProductResource extends Resource
                     ->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('bpom_id')->label('BPOM ID'),
                 Tables\Columns\TextColumn::make('weight')->label('Berat')
-                    ->suffix(fn (Model $record): string => " {$record->weight_type}"),
+                    ->suffix(fn ($record): string => " {$record->weight_type}"),
                 Tables\Columns\TextColumn::make('sugar')->label('Kandungan Gula')
-                    ->suffix(fn (Model $record): string => " {$record->sugar_type}"),
+                    ->suffix(fn ($record): string => " {$record->sugar_type}"),
                 Tables\Columns\TextColumn::make('created_at')->label('Dibuat Pada')
                     ->date(),
                 Tables\Columns\TextColumn::make('updated_at')->label('Diubah Pada')
@@ -87,7 +87,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FeedbackRelationManager::class,
         ];
     }
 

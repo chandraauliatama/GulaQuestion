@@ -5,11 +5,9 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Closure;
 use Filament\Tables\Columns;
-use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
 class ListProducts extends Component implements HasTable
@@ -40,17 +38,15 @@ class ListProducts extends Component implements HasTable
                 ->searchable()->sortable(),
             Columns\TextColumn::make('brand')->searchable()->sortable()->prefix('Produksi: '),
             Columns\TextColumn::make('bpom_id')->label('BPOM ID')->prefix('BPOM ID: '),
-            Columns\TextColumn::make('weight')->suffix(function (Model $record): string {
-                return $record->category == 'makanan' ? ' gram' : ' liter';
-            }),
-            Columns\TextColumn::make('sugar')->suffix(' mg'),
+            Columns\TextColumn::make('weight')->suffix(fn ($record) => " $record->weight_type"),
+            Columns\TextColumn::make('sugar')->suffix(fn ($record) => " $record->sugar_type"),
             //  ]),
         ];
     }
 
     protected function getTableRecordUrlUsing(): Closure
     {
-        return fn (Model $record): string => route('product.show', ['product' => $record]);
+        return fn ($record): string => route('product.show', ['product' => $record]);
     }
 
     public function render()
