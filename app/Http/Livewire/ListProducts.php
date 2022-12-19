@@ -14,6 +14,13 @@ class ListProducts extends Component implements HasTable
 {
     use InteractsWithTable;
 
+    protected $listeners   = ["qrcode"];
+
+    public function qrcode($value)
+    {
+        $this->fill(['tableSearchQuery' => $value]);
+    }
+
     protected function getTableQuery(): Builder
     {
         return Product::query();
@@ -31,13 +38,15 @@ class ListProducts extends Component implements HasTable
     {
         return [
             // Split::make([
-            Columns\TextColumn::make('name')->sortable()->searchable(),
-            Columns\BadgeColumn::make('category')
+            Columns\TextColumn::make('name')->sortable()->searchable()->label('Nama Produk'),
+            Columns\BadgeColumn::make('category')->label('Kategori')
                 ->enum(['makanan' => 'Makanan', 'minuman' => 'Minuman'])
                 ->colors(['danger' => 'makanan', 'success' => 'minuman'])
                 ->searchable()->sortable(),
-            Columns\TextColumn::make('brand')->searchable()->sortable()->prefix('Produksi: '),
-            Columns\TextColumn::make('bpom_id')->label('BPOM ID')->prefix('BPOM ID: '),
+            Columns\TextColumn::make('brand')->searchable()->sortable()
+                ->prefix('Produksi: ')->label('Brand/Perusahaan'),
+            Columns\TextColumn::make('bpom_id')
+                ->label('BPOM ID')->prefix('BPOM ID: ')->searchable(),
             Columns\TextColumn::make('weight')->suffix(fn ($record) => " $record->weight_type"),
             Columns\TextColumn::make('sugar')->suffix(fn ($record) => " $record->sugar_type"),
             //  ]),
