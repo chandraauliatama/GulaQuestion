@@ -80,10 +80,10 @@
                     <x-input-label class="mt-3">Foto Produk & Kandungan Nilai Gizi</x-input-label>
                     <input
                            class="mb-2 block w-full cursor-pointer rounded-xl border border-gray-300 bg-gray-50 text-sm text-gray-600 focus:border-green-500 focus:ring-green-500"
-                           id="image1" name="image1" type="file">
+                           id="image1" name="image1" type="file" accept=".png,.jpeg,.jpg,.svg">
                     <input
                            class="block w-full cursor-pointer rounded-xl border border-gray-300 bg-gray-50 text-sm text-gray-600 focus:border-green-500 focus:ring-green-500"
-                           id="image2" name="image2" type="file">
+                           id="image2" name="image2" type="file" accept=".png,.jpeg,.jpg,.svg">
 
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG
                         (maks ukuran

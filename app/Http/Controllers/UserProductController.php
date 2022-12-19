@@ -46,10 +46,10 @@ class UserProductController extends Controller
             $userProduct->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
 
-        Notification::make() 
+        Notification::make()
             ->title('Terimakasih telah membantu mengisi data produk. Kami akan melakukan peninjauan')
             ->success()
-            ->send(); 
+            ->send();
 
         return redirect()->route('product.create');
     }

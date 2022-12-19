@@ -25,10 +25,10 @@ class FeedbackController extends Controller
             $feedback->addMediaFromRequest('image2')->toMediaCollection('images2');
         }
 
-        Notification::make() 
+        Notification::make()
             ->title('Koreksi yang kamu berikan telah terkirim, terimakasih!')
             ->success()
-            ->send(); 
+            ->send();
 
         return redirect()->route('product.show', $request->product_id);
     }

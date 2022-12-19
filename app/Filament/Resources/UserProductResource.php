@@ -6,6 +6,7 @@ use App\Filament\Resources\UserProductResource\Pages;
 use App\Models\Product;
 use App\Models\UserProduct;
 use Filament\Forms;
+use Filament\Forms\Components\ViewField;
 use Filament\Forms\Components\Wizard;
 use Filament\Notifications\Notification;
 use Filament\Resources\Form;
@@ -97,6 +98,8 @@ class UserProductResource extends Resource
 
                 Tables\Actions\Action::make('Terima')
                     ->button()->icon(false)
+                    ->modalButton('Masukkan Data')
+                    ->modalSubheading('Setelah data dimasukan ke data produk, data pada tabel ini akan dihapus.')
                     ->mountUsing(fn (Forms\ComponentContainer $form, UserProduct $record) => $form->fill([
                         'sender' => $record->user->name,
                         'sender_email' => $record->user->email,
@@ -107,7 +110,7 @@ class UserProductResource extends Resource
                         'weight' => $record->weight,
                         'weight_type' => $record->weight_type,
                         'sugar' => $record->sugar,
-                        'sugar_type' => $record->sugar_type
+                        'sugar_type' => $record->sugar_type,
                     ]))
                     ->action(function (UserProduct $record, array $data): void {
                         Product::create($data);
@@ -145,11 +148,15 @@ class UserProductResource extends Resource
                                 Forms\Components\Select::make('sugar_type')->label('Satuan Gula')
                                     ->options(['gram' => 'gram', 'mg' => 'mg', 'liter' => 'liter', 'ml' => 'ml'])
                                     ->required(),
-                            ])
+                            ]),
+                            Wizard\Step::make('Foto 1')->schema([
+                                ViewField::make('image')->view('modal.image-modal1'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images1') == null ? true : false),
+                            Wizard\Step::make('Foto 2')->schema([
+                                ViewField::make('image')->view('modal.image-modal2'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images2') == null ? true : false),
                         ]),
-                    ])
-                    ->modalButton('Masukkan Data')
-                    ->modalSubheading('Setelah data dimasukan ke data produk, data pada tabel ini akan dihapus.')
+                    ]),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

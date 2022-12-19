@@ -5,10 +5,13 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\FeedbackResource\Pages;
 use App\Models\Feedback;
 use Filament\Forms;
+use Filament\Forms\Components\ViewField;
+use Filament\Forms\Components\Wizard;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class FeedbackResource extends Resource
 {
@@ -62,11 +65,29 @@ class FeedbackResource extends Resource
                 Tables\Columns\TextColumn::make('feedback')->label('Saran Perbaikan Data')->wrap(),
                 Tables\Columns\TextColumn::make('created_at')->label('Dikirim Pada')->wrap()
                     ->dateTime(),
+                SpatieMediaLibraryImageColumn::make('Foto 1')->collection('images1'),
+                SpatieMediaLibraryImageColumn::make('Foto 2')->collection('images2'),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('Cek Foto')
+                    ->button()->icon(false)->modalButton('Tutup')->color('warning')
+                    ->modalSubheading('Foto untuk cek validasi')
+                    ->hidden(fn ($record) => $record->getFirstMediaUrl('images2') == null && $record->getFirstMediaUrl('images1') == null ? true : false)
+                    ->action(function (): void {
+                    })
+                    ->form([
+                        Wizard::make([
+                            Wizard\Step::make('Foto 1')->schema([
+                                ViewField::make('image')->view('modal.image-modal1'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images1') == null ? true : false),
+                            Wizard\Step::make('Foto 2')->schema([
+                                ViewField::make('image')->view('modal.image-modal2'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images2') == null ? true : false),
+                        ]),
+                    ]),
                 Tables\Actions\Action::make('Perbaiki')
                     ->button()
                     ->url(fn ($record) => ProductResource::getUrl('edit', ['record' => $record->product]))
@@ -96,6 +117,21 @@ class FeedbackResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('Cek Foto')
+                    ->button()->icon(false)->modalButton('Tutup')
+                    ->modalSubheading('Foto untuk cek validasi')
+                    ->hidden(fn ($record) => $record->getFirstMediaUrl('images2') == null && $record->getFirstMediaUrl('images1') == null ? true : false)
+                    ->action(function (): void {
+                    })->form([
+                        Wizard::make([
+                            Wizard\Step::make('Foto 1')->schema([
+                                ViewField::make('image')->view('modal.image-modal1'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images1') == null ? true : false),
+                            Wizard\Step::make('Foto 2')->schema([
+                                ViewField::make('image')->view('modal.image-modal2'),
+                            ])->hidden(fn ($record) => $record->getFirstMediaUrl('images2') == null ? true : false),
+                        ]),
+                    ]),
                 Tables\Actions\DeleteAction::make()
                     ->label('Hapus')->button()->icon(false)
                     ->modalHeading('Hapus Saran Perbaikan Data Produk?')->modalButton('Yes')
