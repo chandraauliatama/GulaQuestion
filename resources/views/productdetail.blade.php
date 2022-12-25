@@ -7,11 +7,36 @@
                 </h5>
             </a>
             <p class="mb-1 font-normal text-gray-700 dark:text-gray-400">Setiap kemasan berisi 250gram</p>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Mengandung gula sebanyak 3 sendok teh</p>
-            <div class="mb-4 flex justify-center gap-2">
-                <img src="{{ asset('images/sendok.svg') }}" alt="" class="w-16">
-                <img src="{{ asset('images/sendok.svg') }}" alt="" class="w-16">
-                <img src="{{ asset('images/sendok.svg') }}" alt="" class="w-16">
+            @php
+                switch ($product->sugar_type) {
+                    case 'l':
+                        $product->sugar = $product->sugar * 1000 * 0.85;
+                        break;
+                    case 'ml':
+                        $product->sugar = $product->sugar * 0.85;
+                        break;
+                    case 'mg':
+                        $product->sugar = $product->sugar / 1000;
+                        break;
+                }
+                $product->sugar_type = 'gram';
+                $sendok = round($product->sugar / 5);
+            @endphp
+            <p class="font-normal text-gray-700 dark:text-gray-400">Mengandung gula sebanyak {{ $product->sugar . $product->sugar_type }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Setara dengan &plusmn; {{ $sendok }} sendok teh</p>
+            <div class="mb-4 flex items-center justify-center gap-2">
+                @if ($sendok <= 5)
+                    @for ($i = 0; $i < $sendok; $i++)
+                        <img src="{{ asset('images/sendok.svg') }}" alt="" class="{{ $sendok <= 3 ? 'w-16' : 'hidden w-16 lg:block' }}">
+                    @endfor
+                    @if ($sendok > 3)
+                        <img src="{{ asset('images/sendok.svg') }}" alt="" class="w-16 lg:hidden">
+                        <h1 class="text-6xl font-extrabold text-green-700 lg:hidden">x{{ $sendok }}</h1>
+                    @endif
+                @else
+                    <img src="{{ asset('images/sendok.svg') }}" alt="" class="w-16">
+                    <h1 class="text-6xl font-extrabold text-green-700">x{{ $sendok }}</h1>
+                @endif
             </div>
 
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Data yang kamu lihat salah atau keliru? <br>

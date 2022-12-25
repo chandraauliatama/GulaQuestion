@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <header class="fixed w-full">
+    <header class="fixed z-40 w-full">
         @include('layouts.navigation')
     </header>
 

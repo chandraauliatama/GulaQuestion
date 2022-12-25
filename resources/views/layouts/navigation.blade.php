@@ -82,10 +82,10 @@
                     <x-nav-link :href="route('product.create')" :active="request()->routeIs('product.create')">Tambah Data Gula</x-nav-link>
                 </li>
                 <li>
-                    <x-nav-link>Fitur</x-nav-link>
+                    <x-nav-link :href="route('team')" :active="request()->routeIs('team')">Team</x-nav-link>
                 </li>
                 <li>
-                    <x-nav-link>Team</x-nav-link>
+                    <x-nav-link href="#fitur">Fitur</x-nav-link>
                 </li>
                 <li>
                     <x-nav-link>FAQ</x-nav-link>

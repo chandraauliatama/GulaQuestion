@@ -47,11 +47,18 @@ class ListProducts extends Component implements HasTable
                 ->prefix('Produksi: ')->label('Brand/Perusahaan'),
             Columns\TextColumn::make('bpom_id')
                 ->label('BPOM ID')->prefix('BPOM ID: ')->searchable(),
-            Columns\TextColumn::make('weight')->suffix(fn ($record) => " $record->weight_type"),
+            Columns\TextColumn::make('weight')
+                ->prefix('Berat Produk: ')
+                ->suffix(fn ($record) => " $record->weight_type"),
             Columns\TextColumn::make('sugar')->suffix(fn ($record) => " $record->sugar_type"),
             //  ]),
         ];
     }
+
+    protected function getTableRecordsPerPageSelectOptions(): array 
+    {
+        return [12, 24, 36, 48, 60];
+    } 
 
     protected function getTableRecordUrlUsing(): Closure
     {

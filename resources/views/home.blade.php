@@ -330,89 +330,16 @@
         <!-- Start block -->
         <section class="bg-white dark:bg-gray-900" id="team">
             <div class="mx-auto max-w-screen-xl px-4 py-8 lg:py-24 lg:px-6">
-                <div class="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
+                <div class="mx-auto mb-8 mt-20 max-w-screen-md text-center md:mt-0 lg:mb-12">
                     <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Team Creator
                     </h2>
-                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400 sm:text-xl">Tim kami terdiri dari orang-orang yang handal dan berpengalaman di bidang masing-masing. Kami bekerja sama untuk membuat website ini menjadi lebih baik dan menarik bagi Anda</p>
+                    <p class="mb-5 font-light text-gray-500 dark:text-gray-400 sm:text-xl">Tim kami terdiri dari orang-orang yang handal dan berpengalman di bidangnya. Kami bekerja sama untuk membuat webiste ini lebih baik dan menarik.</p>
                 </div>
                 <div class="space-y-8 sm:gap-6 lg:grid lg:grid-cols-4 lg:space-y-0 xl:gap-10">
-                    <!-- Pricing Card -->
-                    <div
-                         class="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow dark:border-gray-500 dark:bg-gray-800 dark:text-white xl:p-8">
-                        <h3 class="mb-4 text-xl font-semibold">Nadhif Ali Ikhsani</h3>
-
-                        <!-- List -->
-                        <ul role="list" class="mt-3 mb-8 space-y-4 text-left">
-                            <li class="flex items-center justify-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
-                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Front End Developer</span>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div
-                         class="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow dark:border-gray-500 dark:bg-gray-800 dark:text-white xl:p-8">
-                        <h3 class="mb-4 text-xl font-semibold">Chandra Aulia Tama</h3>
-                        <!-- List -->
-                        <ul role="list" class="mt-3 mb-8 space-y-4 text-left">
-                            <li class="flex items-center justify-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
-                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Back End Developer</span>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!-- Pricing Card -->
-                    <div
-                         class="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow dark:border-gray-500 dark:bg-gray-800 dark:text-white xl:p-8">
-                        <h3 class="mb-4 text-xl font-semibold">M.Rehza Pahlevi</h3>
-                        <!-- List -->
-                        <ul role="list" class="mt-3 mb-8 space-y-4 text-left">
-                            <li class="flex items-center justify-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
-                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="mx-auto">UI / UX Designer</span>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                    <!-- Pricing Card -->
-                    <div
-                         class="mx-auto flex max-w-lg flex-col rounded-lg border border-gray-100 bg-white p-6 text-center text-gray-900 shadow dark:border-gray-500 dark:bg-gray-800 dark:text-white xl:p-8">
-                        <h3 class="mb-4 text-xl font-semibold">Samy Zaidan</h3>
-                        <!-- List -->
-                        <ul role="list" class="mt-3 mb-8 space-y-4 text-left">
-                            <li class="flex items-center justify-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
-                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                          clip-rule="evenodd"></path>
-                                </svg>
-                                <span>Data Collector</span>
-                            </li>
-
-                        </ul>
-                    </div>
+                    <img src="{{ asset('images/chandra.gif') }}" class="rounded-xl" alt="">
+                    <img src="{{ asset('images/nadhif.gif') }}" class="rounded-xl">
+                    <img src="{{ asset('images/rehza.gif') }}" class="rounded-xl">
+                    <img src="{{ asset('images/samy.gif') }}" class="rounded-xl">
                 </div>
             </div>
         </section>

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/admin/login', '/login');
 
 Route::view('/', 'home')->name('home');
+Route::view('/team', 'team')->name('team');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     // Redirect User After Login
