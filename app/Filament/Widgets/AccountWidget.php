@@ -1,6 +1,9 @@
 <?php
 
-namespace Filament\Widgets;
+// namespace Filament\Widgets;
+namespace App\Filament\Widgets;
+
+use Filament\Widgets\Widget;
 
 class AccountWidget extends Widget
 {
