@@ -10,7 +10,7 @@
 
 ## GulaQuestion Detail Product Page
 
-![Gula Question Detail Product Page](https://user-images.githubusercontent.com/64741857/212136734-4addffdf-7cb6-4983-9bbc-4e847d0e5a1c.png)
+![Gula Question Detail Product Page](https://user-images.githubusercontent.com/64741857/212138213-2a0011d8-eb3e-485d-9528-88500d98509a.png)
 
 ## GulaQuestion Admin Dashboard Page
 
