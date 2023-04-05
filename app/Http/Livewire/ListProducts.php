@@ -14,7 +14,7 @@ class ListProducts extends Component implements HasTable
 {
     use InteractsWithTable;
 
-    protected $listeners   = ["qrcode"];
+    protected $listeners = ['qrcode'];
 
     public function qrcode($value)
     {
@@ -55,10 +55,10 @@ class ListProducts extends Component implements HasTable
         ];
     }
 
-    protected function getTableRecordsPerPageSelectOptions(): array 
+    protected function getTableRecordsPerPageSelectOptions(): array
     {
         return [12, 24, 36, 48, 60];
-    } 
+    }
 
     protected function getTableRecordUrlUsing(): Closure
     {

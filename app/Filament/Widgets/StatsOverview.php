@@ -17,7 +17,7 @@ class StatsOverview extends BaseWidget
             Card::make('Total Pengguna', User::count()),
             Card::make('Total Produk', Product::count()),
             Card::make('Saran Masuk', Feedback::count()),
-            Card::make('Produk Kiriman Pengguna', UserProduct::count())
+            Card::make('Produk Kiriman Pengguna', UserProduct::count()),
         ];
     }
 }
